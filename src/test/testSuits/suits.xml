@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="3" verbose="1" name="Courswork"
+       annotations="JDK" parallel="tests">
+
+    <test name="JS executor">
+        <classes>
+            <class name="qa.automation.LoginTests"/>
+        </classes>
+    </test>
+<!--    <test name="Wait Test">-->
+<!--        <classes>-->
+<!--            <class name="qa.automation.ProductTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>
