@@ -26,7 +26,7 @@ public class ProductsPage {
         WebElement addToCartButton = driver.findElement(By.xpath(xpathOfElementToBeAdded));
         addToCartButton.click();
     }
-
+//we can ise this to verify item is added to the cart
     public int getItemsInTheCart(){
         return Integer.parseInt(shoppingCartCounter.getText());
     }

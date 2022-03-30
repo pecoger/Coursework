@@ -4,6 +4,7 @@ import base.TestUtils;
 import com.opencsv.exceptions.CsvException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.LoginPage;
 import pages.ProductsPage;
 import utils.CsvHelper;
@@ -18,10 +19,14 @@ public class ProductsTests extends TestUtils {
     }
 
     @Test(dataProvider = "validCredentials")
-    public void addToCart(String userName, String userPassword) throws IOException, CsvException {
-            LoginPage loginPage = new LoginPage(driver);
-            ProductsPage productsPage = loginPage.login(userName, userPassword);
-            ProductsPage testAddToCart = new ProductsPage(driver);
-            testAddToCart.addItemToCart("Bolt T-Shirt");
+    public void addToCart(String userName, String userPassword) throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        ProductsPage productsPage = loginPage.login(userName, userPassword);
+        productsPage.addItemToCart("bolt-t-shirt");
+        productsPage.addItemToCart("onesie");
+        Thread.sleep(3000);
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(productsPage.getItemsInTheCart(), 2,"To have added products.");
+
     }
 }

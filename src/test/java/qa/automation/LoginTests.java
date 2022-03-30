@@ -41,5 +41,6 @@ public class LoginTests extends TestUtils {
 
         WebElement loginError = driver.findElement(By.xpath("//*[text()='Epic sadface: Username and password do not match any user in this service']"));
         Assert.assertTrue(loginError.isDisplayed());
+        //TODO write validation for all error messages
     }
 }
