@@ -1,16 +1,31 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite thread-count="3" verbose="1" name="Courswork"
+<suite thread-count="5" verbose="1" name="Coursework"
        annotations="JDK" parallel="tests">
 
-    <test name="JS executor">
+    <test name="Login Tests">
         <classes>
             <class name="qa.automation.LoginTests"/>
         </classes>
     </test>
-<!--    <test name="Wait Test">-->
-<!--        <classes>-->
-<!--            <class name="qa.automation.ProductTests"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Product Tests">
+        <classes>
+            <class name="qa.automation.ProductsTests"/>
+        </classes>
+    </test>
+    <test name="Checkout Tests">
+        <classes>
+            <class name="qa.automation.CheckoutTests"/>
+        </classes>
+    </test>
+    <test name="Login Error Tests">
+        <classes>
+            <class name="qa.automation.LoginErrorTests"/>
+        </classes>
+    </test>
+    <test name="Problem User Tests">
+        <classes>
+            <class name="qa.automation.ProblemUserImageTest"/>
+        </classes>
+    </test>
 </suite>

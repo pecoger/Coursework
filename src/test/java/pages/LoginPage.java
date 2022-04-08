@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
     protected WebDriver driver;
 
-//page elements
     @FindBy(id = "user-name")
     private WebElement usernameInput;
 
@@ -17,14 +16,24 @@ public class LoginPage {
 
     @FindBy(id = "login-button")
     private WebElement loginButton;
-//page elements
 
-//constructor
+    @FindBy(xpath = "//*[text()='Epic sadface: Username and password do not match any user in this service']")
+    private WebElement loginErrorMismatch;
+
+    @FindBy(xpath = "//*[text()='Epic sadface: Password is required']")
+    private WebElement loginErrorPassword;
+
+    @FindBy(xpath = "//*[text()='Epic sadface: Username is required']")
+    private WebElement loginErrorUsername;
+
+    @FindBy(xpath = "//button[@class='error-button']")
+    private WebElement buttonForCLosingErroMessages;
+
     public LoginPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-//methods
+    // this method logs into the page
     public ProductsPage login(String username, String password){
         usernameInput.click();
         usernameInput.clear();
@@ -37,5 +46,9 @@ public class LoginPage {
         loginButton.click();
 
         return new ProductsPage(driver);
+    }
+//    this method check if a message is displayed when there is login error
+    public boolean isLoginErrorMessageDisplayed(){
+            return buttonForCLosingErroMessages.isDisplayed();
     }
 }
